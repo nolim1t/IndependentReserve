@@ -1,7 +1,6 @@
 require 'openssl'
 require 'json'
 require 'digest/md5'
-require './environment'
 require 'httparty'
 
 
