@@ -9,13 +9,17 @@ class IndependentReserve
 	base_uri 'https://api.independentreserve.com'
 
 	def initialize(options={})
-		@apisecret = ENV['access_secret']
-		@apikey = ENV['access_key']
+		@apisecret = ENV['ir_access_secret']
+		@apikey = ENV['ir_access_key']
 		if options[:primaryCurrency] != nil then
 			@primaryCurrency = options[:primaryCurrency]
+		else
+			@primaryCurrency = "XBT"
 		end
 		if options[:secondaryCurrency] != nil then
 			@secondaryCurrency = options[:secondaryCurrency]
+		else
+			@secondaryCurrency = "AUD"
 		end
 	end
 
@@ -44,14 +48,14 @@ class IndependentReserve
 			json_to_post[:apiKey] = @apikey
 
 			additionals = 'nonce=' + nonce.to_s + '&signature=' + signed + '&apiKey=' + @apikey + '&primaryCurrencyCode=' + @primaryCurrency
-			
+
 			if @secondaryCurrency != nil
 				additionals = additionals + '&secondaryCurrencyCode=' + @secondaryCurrency
 			end
 		end
 		if arguments.length == 1 then
 			if arguments[0].kind_of? Hash then
-				arguments[0].each {|k,v| 
+				arguments[0].each {|k,v|
 					additionals = additionals + "#{@values}&#{k}=#{v}"
 					json_to_post["#{k}"] = v
 				}
