@@ -1,5 +1,8 @@
 # IndependentReserve
-Ruby library for interfacing with the IndependentReserve API (https://www.independentreserve.com/Api)
+[![Gem Version](https://badge.fury.io/rb/nl-independentreserve.svg)](https://badge.fury.io/rb/nl-independentreserve)
+
+## About
+Ruby gem for interfacing with the IndependentReserve API (https://www.independentreserve.com/Api)
 
 ## Installing
 * gem install httparty
